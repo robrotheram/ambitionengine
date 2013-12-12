@@ -1,18 +1,23 @@
 <?php
+
 //login methood
 function login($user, $pass){
+	global $con;
 	$sql  = "SELECT * FROM LoginDetails WHERE username = '$user'";
 	$response;
 	if (!mysqli_query($con,$sql)){
 		$response = FALSE;
 	}else{
 		$result = mysqli_fetch_array(mysqli_query($con,$sql));
+		
 		if($result['password'] == $pass){
 			$response = TRUE;
+			
 		} else{
 			$response = FALSE;
 		}
 	}
+	return $response;
 }
 function addLogin($user, $pass){
 	$response;
@@ -39,7 +44,7 @@ function updateLogin($user,$pass){
 	
 }
 
-function removeLigin($user){
+function removeLogin($user){
 	$respose;	
 	$sql  = "DELETE FROM LoginDetails where username = '$user'";
 	if (!mysqli_query($con,$sql)){

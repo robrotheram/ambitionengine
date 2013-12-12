@@ -1,8 +1,6 @@
 <?php
-	require_once('settings.php');
-
-	//use mySQLi
-	$con=mysqli_connect($dbhost,$dbuname,$dbpass,$dbname);
+		//use mySQLi
+	$con = mysqli_connect($db_host, $db_user_name, $db_password, $db_db);
 	
 	// Check connection
 	if (mysqli_connect_errno())
