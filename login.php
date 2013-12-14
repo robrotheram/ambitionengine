@@ -20,11 +20,21 @@ function login($user, $pass){
 	return $response;
 }
 function addLogin($user, $pass){
+	global $con;
 	$response;
-	$sql = "INSERT INTO LoginDetails(username , password) VALUES('$un', '$pass');";
+	$sql = "INSERT INTO LoginDetails(username , password) VALUES('$user', '$pass');";
 	if (mysqli_query($con, $sql) == TRUE) {
+		 $myemail = "yoyoambition@gmail.com" ;
+	 	 $subject = "Sign Up yoyoambiton" ;
+	  	$message = "Good Day to you. It seems that you have signed up for Yoyoambition.com .";
+	  	mail($email, $subject,
+	  	$message, "From:" . $user);
+		
+		
 		$response = TRUE;
 	}else{
+		die('Error: ' . mysqli_error($con));
+		
 		$response = FALSE;
 	}
 	return $response;
@@ -32,6 +42,7 @@ function addLogin($user, $pass){
 }
 //update person
 function updateLogin($user,$pass){
+	global $con;
 	$response;
 	$sql = "UPDATE LoginDetails set  password = '$pass' where username='$user');";
 	if (mysqli_query($con, $sql) == TRUE) {
@@ -45,6 +56,7 @@ function updateLogin($user,$pass){
 }
 
 function removeLogin($user){
+	global $con;
 	$respose;	
 	$sql  = "DELETE FROM LoginDetails where username = '$user'";
 	if (!mysqli_query($con,$sql)){
