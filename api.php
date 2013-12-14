@@ -18,6 +18,9 @@
 		    case "LOGIN":
 		        MSQL_login($_POST['username'], $_POST['password'],$_POST['nexturl']);
 		        break;
+			case "REGISTER":
+				MSQL_register($_POST['registerUsername'], $_POST['registerPassword'],$_POST['nexturl']);
+				break;
 		}
 	}
 

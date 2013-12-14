@@ -12,4 +12,17 @@ function MSQL_login($user, $pass,$next){
 	}
 	
 }
+function MSQL_register($user, $pass,$next){
+	require('login.php');
+	
+	if(addLogin($user, $pass)==TRUE){
+		
+		session_start();	
+		$_SESSION['userid'] = $user;
+		header('Location:'.$next);
+	}else{
+		header('Location: fail.php');
+	}
+	
+}
 ?>

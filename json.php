@@ -12,7 +12,7 @@ function JSON_login($user, $pass){
 		
 	}else{
 		$response["success"] = 0;
-		$response["message"] = "Login Error my be a wrong username and/or password cpmbination";
+		$response["message"] = "Login Error my be a wrong username and/or password combination";
 	}
 	echo json_encode($response);	
 }
