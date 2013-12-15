@@ -11,6 +11,6 @@ switch ($page)
    break;
 	
 }
- require_once('pages/footer.php');
+ require_once('footer.php');
 
 
