@@ -9,8 +9,8 @@ function login($user, $pass){
 		$response = FALSE;
 	}else{
 		$result = mysqli_fetch_array(mysqli_query($con,$sql));
-		
-		if($result['password'] == $pass){
+		$password = hash('sha512', $pass).$result['salt']; 
+		if($result['password'] == $password){
 			$response = TRUE;
 			
 		} else{
@@ -22,7 +22,12 @@ function login($user, $pass){
 function addLogin($user, $pass){
 	global $con;
 	$response;
-	$sql = "INSERT INTO LoginDetails(username , password) VALUES('$user', '$pass');";
+	$paasword = hash("sha512", $pass);
+	$salt = hash("sha512", time());
+	$nwpass =  $paasword.$salt;
+	$sql = "INSERT INTO LoginDetails(username , password, salt) VALUES('$user', '$nwpass','$salt');";
+	
+	
 	if (mysqli_query($con, $sql) == TRUE) {
 		 $myemail = "yoyoambition@gmail.com" ;
 	 	 $subject = "Sign Up yoyoambiton" ;
