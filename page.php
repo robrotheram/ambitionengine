@@ -4,13 +4,13 @@ $page = $_GET['p'];
 switch ($page)
 {
 	case "about":
-   require_once('about.php');
+   require_once('pages/about.php');
    break;
    case "home":
-   require_once('home.php');
+   require_once('pages/home.php');
    break;
 	
 }
- require_once('footer.php');
+ require_once('pages/footer.php');
 
 

@@ -31,7 +31,7 @@
   <!-- Collect the nav links, forms, and other content for toggling -->
   <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
     <ul class="nav navbar-nav">
-       	<li><a href="check.php" data-target="#carousel-example-captions" data-slide-to="1">Account</a></li>
+       	<li><a href="src/check.php" data-target="#carousel-example-captions" data-slide-to="1">Account</a></li>
       	<li><a href="index.html?page=contact" data-target="#carousel-example-captions" data-slide-to="3">Conctact</a></li>
         <li><a href="page.php?p=about">About</a></li>
       
