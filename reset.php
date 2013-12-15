@@ -11,8 +11,8 @@ function sendreset($email){
 	  $myemail = "yoyoambition@gmail.com" ;
 	  $subject = "Reset Password for yoyoambiton" ;
 	  $message = "Good Day to you. It seems that you have forgotten your password. Enter the code '.$code.' to http://yoyoambition.com/forgot. If you are a hacker please don't take advantage of this user play nice.";
-	  mail($email, $subject,
-	  $message, "From:" . $myemail);
+	  require 'email.php';
+	  sendEmail($email,$myemail,$subject,$message);
 	}else{
 		die('Error: ' . mysqli_error($con));
 		$response = FALSE;

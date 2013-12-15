@@ -1,7 +1,7 @@
 <?php
 
 require_once 'src/Mandrill.php';
-require_once 'settings';
+require_once 'settings.php';
 
 function sendEmail($to,$from,$subject,$mssg){
 	global $mandrillApiKey;

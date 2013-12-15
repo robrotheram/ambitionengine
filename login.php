@@ -27,9 +27,8 @@ function addLogin($user, $pass){
 		 $myemail = "yoyoambition@gmail.com" ;
 	 	 $subject = "Sign Up yoyoambiton" ;
 	  	$message = "Good Day to you. It seems that you have signed up for Yoyoambition.com .";
-	  	mail($email, $subject,
-	  	$message, "From:" . $user);
-		
+		require 'email.php';
+		sendEmail($user,$myemail,$subject,$message);
 		
 		$response = TRUE;
 	}else{
