@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Yoyo Ambition</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+<link href="css/galaxy.css" rel="stylesheet">
+<link href='http://fonts.googleapis.com/css?family=Coming+Soon' rel='stylesheet' type='text/css'>
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+    
+    <script src="http://crypto-js.googlecode.com/svn/tags/3.1.2/build/rollups/sha3.js"></script>
+<script type="text/javascript">
+var check = new Boolean();
+function message() {
+	alert("I am sorry this feature has not been implemented yet but we are on the case");
+}
+function toggleStyle() {
+	 var hash = CryptoJS.SHA3(document.forms["login"]["password"].value, { outputLength: 512 });
+     document.forms["login"]["password"].value = hash;
+		
+}
+
+function validateForm(){
+	if(window.check){
+		var hash = CryptoJS.SHA3(document.forms["registerUser"]["registerPassword"].value, { outputLength: 512 });
+     	document.forms["registerUser"]["registerPassword"].value = hash;
+		return true;
+	}else{
+		alert("Please Check what you have entered");
+    	return false;
+	}
+}
+
+function validateEmail(){
+	var emails = document.getElementById("emailFrom").value.length;
+	var subjects = document.getElementById("subject").value.length;
+	var messages = document.getElementById("textarea").value.length;
+	if(emails == 0 || subjects == 0 || messages== 0){
+		alert("Please make sure you enterted text correctly value: ");
+		return false;
+	}else{
+		return true;
+	}
+}
+
+document.getElementById('registerUser').onsubmit = function() {
+	alert(window.check);
+	if (window.check){
+	
+	 return true;
+	}else{
+		alert("Error Check what you have entered");
+		return false;
+
+	}
+}
+
+function validation(){
+	var pass = document.getElementById("registerPassword").value;
+	var passlength = document.getElementById("registerPassword").value.length;
+	var pass2 = document.getElementById("inputPassword2").value;
+	
+	if (pass != pass2 ){
+		document.getElementById("passwordinput").className = "col-sm-6 has-error";
+		document.getElementById("passcheck").className = "col-sm-6 has-error";
+		document.getElementById("message1").className = "help-block";
+		document.getElementById("message3").className = "help-block";
+		check = false;
+	} else{
+		document.getElementById("passwordinput").className = "col-sm-6";
+		document.getElementById("passcheck").className = "col-sm-6";
+		document.getElementById("message1").className = "help-block displaynone";
+		document.getElementById("message3").className = "help-block displaynone";
+		check = true;
+	}
+	
+	if (passlength < 7 ){
+		document.getElementById("passwordinput").className = "col-sm-6 has-error";
+		document.getElementById("message2").className = "help-block";
+		check = false;
+	} else{
+		document.getElementById("passwordinput").className = "col-sm-6";
+		document.getElementById("message2").className = "help-block displaynone";
+		check = true;
+	}
+	
+	
+	
+	
+}
+
+function getUrlVars() {
+    var vars = {};
+    var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+        vars[key] = value;
+    });
+    return vars;
+}
+
+function myFunction()
+{
+	var second = getUrlVars()["page"];
+	if(second =='contact'){
+		$('#carousel-example-captions').carousel(3);
+	}else if(second =='signup'){
+		$('#carousel-example-captions').carousel(2);
+	}else if(second =='login'){
+		$('#carousel-example-captions').carousel(1);
+	}
+}
+</script>
+  </head>
+  <body onLoad="myFunction()">
+<div id="galaxy">
+	<div class="bg"></div>
+	<div class="stars-back"></div>
+	<div class="stars-middle"></div>
+	<div class="stars-front"></div>
+</div>
+
+<img class="logo" src="img/logo.png">
+          <div class="container centered" style="@media(max-width:767px){height:500px;}">   
+          <div id="carousel-example-captions" class="carousel slide" data-ride="carousel" data-interval="false">
+        <div class="carousel-inner ">
+          <div class="item active">
+            <form class="form-search" role="form" onSubmit="message();">
+          <div class="input-group">
+              <input type="text" class="form-control glow textlarge" placeholder="What is your passion?">
+              <span class="input-group-btn">
+                  <button type="submit" class="btn btn-primary glow textlarge">Search</button>
+              </span>
+          </div>
+      </form>
+          
+          </div>
+          <div class="item" >
+        	<form name="login" id="login" class="form-horizontal"  role="form" method="post" action="ambitionengine/api.php" onsubmit="toggleStyle()" >
+     <input type="hidden" name="content_type" value="OTHER">
+     <input type="hidden" name="request_type" value="LOGIN">
+     <input type="hidden" name="nexturl" value="http://yoyoambition.com/beta/page.php?p=home">
+  <div class="form-group">
+    <div class="col-sm-12">
+      <input type="email" class="form-control" name="username" id="username" placeholder="Email">
+    </div>
+  </div>
+  <div class="form-group">
+   
+    <div class="col-sm-12">
+      <input type="password" class="form-control" name="password" id="password" placeholder="Password">
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-sm-4">
+		<button type="submit" class="btn btn-primary" style="width:100%">Sign in</button>    </div>
+    <div class="col-sm-4">
+      <a href="" class="btn btn-info" onClick="message()" style="width:100%">Forgot Password</a>
+    </div>
+     <div class="col-sm-4">
+      <a href="" class="btn btn-success" data-target="#carousel-example-captions" data-slide-to="2" style="width:100%">Register</a>
+    </div>
+  </div>
+</form>
+          </div> 
+             <div class="item" >
+        	<form name="registerUser" id="registerUser"  class="form-horizontal" role="form" method="post" action="ambitionengine/api.php" onsubmit="return validateForm();">
+
+  <div class="form-group">
+    <div class="col-sm-12">
+    <input type="hidden" name="content_type" value="OTHER">
+     <input type="hidden" name="request_type" value="REGISTER">
+     <input type="hidden" name="nexturl" value="http://www.google.com">
+    
+      <input type="email" class="form-control" id="registerUsername" name="registerUsername" placeholder="Email">
+    </div>
+  </div>
+  <div class="form-group">
+   
+    <div id="passwordinput" class="col-sm-6">
+      <input type="password" class="form-control" id="registerPassword" placeholder="Password" name="registerPassword" onKeyUp="validation()">
+      <span id="message1" class="help-block displaynone">Passwords Do not match</span>
+      <span id="message2" class="help-block displaynone">Need 8 or more charcters</span>
+    </div>
+    <div id="passcheck" class="col-sm-6">
+      <input type="password" class="form-control" id="inputPassword2" placeholder="Password Again" onKeyUp="validation()">
+      <span id="message3" class="help-block displaynone">Passwords Do not match</span>
+
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-sm-12">
+      <button type="submit" class="btn btn-primary" style="width:100%">Sign up</button>
+    </div>
+  </div>
+       	  </form>
+          </div>
+          
+          <div class="item" >
+        	<form name="email" id="email"  class="form-horizontal" role="form" method="post" action="email.php" onSubmit="return validateEmail();" >
+
+  <div class="form-group">
+    <div class="col-sm-12">
+      <input type="email" class="form-control" id="emailFrom" name="emailFrom" placeholder="Email">
+    </div>
+  </div>
+    <div class="form-group">
+    <div class="col-sm-12">
+      <input type="text" class="form-control" id="subject" name="subject" placeholder="subject">
+    </div>
+  </div>
+    <div class="form-group">
+    <div class="col-sm-12">
+         <textarea id="textarea" name="message" class="form-control" rows="4" placeholder="Message"></textarea>
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <div class="col-sm-12">
+      <button type="submit" class="btn btn-primary" style="width:100%">Send Message</button>
+    </div>
+  </div>
+       	  </form>
+          </div>
+
+  
+        
+      </div>
+    </div><!-- /example -->     
+          </div>
+          
+       
+       
+       
+
+ 
+		   
+<nav class="navbar navbar-default navbar-fixed-bottom" role="navigation">
+  <!-- Brand and toggle get grouped for better mobile display -->
+  <div class="navbar-header" style="padding-left:30px;">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="" data-target="#carousel-example-captions" data-slide-to="0">YOYO</a>
+  </div>
+
+  <!-- Collect the nav links, forms, and other content for toggling -->
+  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+    <ul class="nav navbar-nav">
+       	<li><a href="check.php">Account</a></li>
+      	<li><a href="index.html" data-target="#carousel-example-captions" data-slide-to="3">Conctact</a></li>
+        <li><a href="page.php?p=about">About</a></li>
+    </ul>
+     <ul class="nav navbar-nav navbar-right" style="padding-right:30px;">
+     <li><a href="http://facebook.com/robrotheram" >Facebook</a> </li>
+     <li><a href="http://twitter.com/robrotheram" >Twitter</a></li>
+     <li><a href="http://gplus.to/robrotheram" > Google+</a></li>
+    </ul>
+  </div><!-- /.navbar-collapse -->
+</nav>
+		 
+
+	 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+    
+  </body>
+</html>
