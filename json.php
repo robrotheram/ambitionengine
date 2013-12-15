@@ -1,5 +1,7 @@
 <?php
-
+	require('settings.php');
+	require('db_connect.php');
+	
 function JSON_login($user, $pass){
 	require('login.php');
 	$response = array();

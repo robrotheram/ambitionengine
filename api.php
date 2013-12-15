@@ -1,6 +1,5 @@
 <?php
-	require('settings.php');
-	require('db_connect.php');
+
 	$type = $_POST['content_type'];
 	$request = $_POST['request_type'];
 	

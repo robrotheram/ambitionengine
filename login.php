@@ -9,7 +9,8 @@ function login($user, $pass){
 		$response = FALSE;
 	}else{
 		$result = mysqli_fetch_array(mysqli_query($con,$sql));
-		$password = hash('sha512', $pass).$result['salt']; 
+		$password =  hash("sha512",(hash('sha512', $pass).$result['salt'])); 
+		
 		if($result['password'] == $password){
 			$response = TRUE;
 			
@@ -24,7 +25,7 @@ function addLogin($user, $pass){
 	$response;
 	$paasword = hash("sha512", $pass);
 	$salt = hash("sha512", time());
-	$nwpass =  $paasword.$salt;
+	$nwpass = hash("sha512",($paasword.$salt));
 	$sql = "INSERT INTO LoginDetails(username , password, salt) VALUES('$user', '$nwpass','$salt');";
 	
 	
