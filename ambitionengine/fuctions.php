@@ -52,4 +52,11 @@ function MYSQL_resetUsersPassword($user,$pass){
 		header('Location: ../index.html');	
 	}
 }
+
+function MYSQL_search($key,$loc){
+		require 'aggregate_search.php';
+		return json_decode(search($key,$loc));
+	}
+
+
 ?>

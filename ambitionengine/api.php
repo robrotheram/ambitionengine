@@ -9,6 +9,9 @@
 		    case "LOGIN":
 		        JSON_login($_POST['username'], $_POST['password']);
 		        break;
+			case "SEARCH":
+				JSON_Search($_POST['keyword'], $_POST['search']);
+				break;
 		}
 		
 	}else{
@@ -25,6 +28,9 @@
 				break;
 			case "RESETPASSWORD":
 				 MYSQL_resetUsersPassword($_POST['registerUsername'], $_POST['registerPassword']);
+				break;
+			case "SEARCH":
+				 MYSQL_Search($_POST['keyword'], $_POST['search']);
 				break;
 		}
 	}

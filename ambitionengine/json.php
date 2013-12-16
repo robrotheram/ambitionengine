@@ -18,6 +18,10 @@ function JSON_login($user, $pass){
 	}
 	echo json_encode($response);	
 }
+	function JSON_search($key,$loc){
+		require 'aggregate_search.php';
+		echo search($key,$loc);
+	}
 
 
 
