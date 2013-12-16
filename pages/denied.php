@@ -14,18 +14,21 @@
       </div>
     
     </div>
-<div class="container">
-<div class="media">
-  <a class="pull-left" href="#">
-    <img class="media-object" src="img/denided.png" alt="...">
-  </a>
-  <div class="media-body">
-    <h4 class="media-heading">Access Denied</h4>
-    I am sorry but the page you are trying to access is not avalible to you. <br>
-    Have you trired to log in?
-     <a href="index.html?page=login" class="btn btn-warning btn-lg">Sign up</a>
-  </div>
+<div class="container white">
+	<div class="row">
+		<div class="col-lg-2">
+	    	<img class="img-rounded img-thumbnail" src="img/denided.png" alt="...">
+		</div>
+  		<div class="col-lg-10 textlarge">
+		    <h3>Access Denied</h3>
+		    I am sorry but the page you are trying to access is not avalible to you. <br>
+		    Have you trired to log in?<br>
+		    <br>
+		    <div class="row">
+		    	<a href="index.html?page=login" class="btn btn-success col-lg-6" >login</a><a href="index.html?page=signup" class="btn btn-warning col-lg-6">Sign up</a>
+			</div>
+		</div>
 </div>
-
+<hr>
 
 </div>

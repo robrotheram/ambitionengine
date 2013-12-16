@@ -14,6 +14,119 @@
       <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
     <![endif]-->
     
+    
+    
+        <script src="http://crypto-js.googlecode.com/svn/tags/3.1.2/build/rollups/sha3.js"></script>
+<script type="text/javascript">
+var check = new Boolean();
+function message() {
+	alert("I am sorry this feature has not been implemented yet but we are on the case");
+}
+function toggleStyle() {
+	 var hash = CryptoJS.SHA3(document.forms["login"]["password"].value, { outputLength: 512 });
+     document.forms["login"]["password"].value = hash;
+		
+}
+
+function validateForm(){
+	if(window.check){
+		var hash = CryptoJS.SHA3(document.forms["registerUser"]["registerPassword"].value, { outputLength: 512 });
+     	document.forms["registerUser"]["registerPassword"].value = hash;
+		return true;
+	}else{
+		alert("Please Check what you have entered");
+    	return false;
+	}
+}
+
+function validateEmail(){
+	var emails = document.getElementById("emailFrom").value.length;
+	var subjects = document.getElementById("subject").value.length;
+	var messages = document.getElementById("textarea").value.length;
+	if(emails == 0 || subjects == 0 || messages== 0){
+		alert("Please make sure you enterted text correctly value: ");
+		return false;
+	}else{
+		return true;
+	}
+}
+
+document.getElementById('registerUser').onsubmit = function() {
+	alert(window.check);
+	if (window.check){
+	
+	 return true;
+	}else{
+		alert("Error Check what you have entered");
+		return false;
+
+	}
+}
+
+function validation(){
+	var pass = document.getElementById("registerPassword").value;
+	var passlength = document.getElementById("registerPassword").value.length;
+	var pass2 = document.getElementById("inputPassword2").value;
+	
+	if (pass != pass2 ){
+		document.getElementById("passwordinput").className = "col-sm-6 has-error";
+		document.getElementById("passcheck").className = "col-sm-6 has-error";
+		document.getElementById("message1").className = "help-block";
+		document.getElementById("message3").className = "help-block";
+		check = false;
+	} else{
+		document.getElementById("passwordinput").className = "col-sm-6";
+		document.getElementById("passcheck").className = "col-sm-6";
+		document.getElementById("message1").className = "help-block displaynone";
+		document.getElementById("message3").className = "help-block displaynone";
+		check = true;
+	}
+	
+	if (passlength < 7 ){
+		document.getElementById("passwordinput").className = "col-sm-6 has-error";
+		document.getElementById("message2").className = "help-block";
+		check = false;
+	} else{
+		document.getElementById("passwordinput").className = "col-sm-6";
+		document.getElementById("message2").className = "help-block displaynone";
+		check = true;
+	}
+	
+	
+	
+	
+}
+
+function getUrlVars() {
+    var vars = {};
+    var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+        vars[key] = value;
+    });
+    return vars;
+}
+
+function myFunction()
+{
+	var second = getUrlVars()["page"];
+	var messagesent = getUrlVars()["message"];
+	
+	if(second =='contact'){
+		$('#carousel-example-captions').carousel(3);
+	}else if(second =='signup'){
+		$('#carousel-example-captions').carousel(2);
+	}else if(second =='login'){
+		$('#carousel-example-captions').carousel(1);
+	}else if(second =='forgot'){
+		$('#carousel-example-captions').carousel(4);
+	}
+	
+	if(messagesent == 'sucess'){
+		document.getElementById("message4").className = "help-block";
+	}
+	
+	
+}
+</script>
   </head>
   <body>
 <nav class="navbar navbar-default navbar-fixed-top" role="navigation">

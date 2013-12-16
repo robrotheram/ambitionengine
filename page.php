@@ -9,6 +9,9 @@ switch ($page)
    case "home":
    require_once('pages/home.php');
    break;
+   case "reset":
+   require_once('pages/resetpassword.php');
+   break;
 	
 }
  require_once('footer.php');

@@ -20,6 +20,12 @@
 			case "REGISTER":
 				MSQL_register($_POST['registerUsername'], $_POST['registerPassword'],$_POST['nexturl']);
 				break;
+			case "RESET":
+				MYSQL_resetPassword($_POST['email']);
+				break;
+			case "RESETPASSWORD":
+				 MYSQL_resetUsersPassword($_POST['registerUsername'], $_POST['registerPassword']);
+				break;
 		}
 	}
 

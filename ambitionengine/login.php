@@ -1,18 +1,19 @@
 <?php
 
 //login methood
-function login($user, $pass){
+function login($user, $paswrd){
 	global $con;
 	$sql  = "SELECT * FROM LoginDetails WHERE username = '$user'";
 	$response;
 	if (!mysqli_query($con,$sql)){
+		die('Error: ' . mysqli_error($con));
 		$response = FALSE;
 	}else{
 		$result = mysqli_fetch_array(mysqli_query($con,$sql));
-		$password =  hash("sha512",(hash('sha512', $pass).$result['salt'])); 
-		
+		$password =  hash("sha512",(hash('sha512', $paswrd).$result['salt'])); 
 		if($result['password'] == $password){
 			$response = TRUE;
+			
 			
 		} else{
 			$response = FALSE;
@@ -49,11 +50,17 @@ function addLogin($user, $pass){
 function updateLogin($user,$pass){
 	global $con;
 	$response;
-	$sql = "UPDATE LoginDetails set  password = '$pass' where username='$user');";
+	$paasword = hash("sha512", $pass);
+	$newsalt = hash("sha512", time());
+	$newhash = hash("sha512",($paasword.$newsalt));
+	
+	$sql = "UPDATE LoginDetails SET salt='$newsalt', password='$newhash' WHERE username='$user';";
 	if (mysqli_query($con, $sql) == TRUE) {
 		$response = TRUE;
 	}else{
 		$response = FALSE;
+		die('Error: ' . mysqli_error($con));
+		
 	}
 	return $response;
 	
