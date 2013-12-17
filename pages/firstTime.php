@@ -1,6 +1,10 @@
 <? 
 	$userid =  $_SESSION['userid'] ;
-	if($userid == NULL){ require 'denied.php';}else{ ?>
+	if($userid == NULL){ require 'denied.php';}else{ 
+	require 'ambitionengine/fuctions.php';
+	$reults =  mysqli_fetch_array(MYSQL_getUser($userid));
+	echo count($reults);
+		?>
     <div class="container white">
        	<form name="email" id="email"  class="form-horizontal" role="form" method="post" action="ambitionengine/api.php" onsubmit="encrypt();">
      <input type="hidden" name="content_type" value="OTHER">
@@ -29,7 +33,7 @@
   <div class="form-group">
   	
     <div class="col-sm-6">
-      <input type="text" class="form-control" name="firstname" placeholder="First Name">
+      <input type="text" class="form-control" name="firstname" placeholder="First Name" >
     </div>
     <div class="col-sm-6">
       <input type="text" class="form-control" name="lName" placeholder="Last Name">

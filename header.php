@@ -32,9 +32,12 @@ function toggleStyle() {
 }
 
 function encrypt() {
+	var passLngth = document.getElementById("registerPassword").value.length;
+	if(passLngth >6 ){
 	 var hash = CryptoJS.SHA3(document.forms["email"]["registerPassword"].value, { outputLength: 512 });
      	document.forms["email"]["registerPassword"].value = hash;
 		return true;
+	}
 		
 }
 
