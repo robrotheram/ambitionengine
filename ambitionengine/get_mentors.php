@@ -6,8 +6,9 @@
 	
 	function getAllMentions(){
 	//include file to connect to the database
-	include("connect.php");
-	
+
+		include ('settings.php');
+		include('db_connect.php');
 		//final response array
 		$response = array();
 		

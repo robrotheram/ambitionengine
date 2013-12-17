@@ -2,6 +2,7 @@
 	$userid =  $_SESSION['userid'] ;
 	if($userid == NULL){ require 'denied.php';}else{
 	require 'ambitionengine/fuctions.php';
+	require 'src/TweetPHP.php';
 	$reults =  mysqli_fetch_array(MYSQL_getUser($userid));
     $email = $userid;
 	$default = "http://yoyoambition.com/beta/img/profile.png";

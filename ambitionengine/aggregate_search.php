@@ -15,7 +15,8 @@
 		$location = $_POST["location"];
 		
 		//include relevant files for functions
-		
+		include("get_jobs.php");
+		include("get_mentors.php");
 		
 		//get results from individual stream php files-------------------------------------------------------
 		
@@ -48,7 +49,7 @@
 		if($mentors_response["success"] == 1 ){
 			$response["mentors"] = $mentors_response["mentors"];
 		} 
-		
+
 		return json_encode($response);
 	}
 ?>

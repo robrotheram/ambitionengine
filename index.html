@@ -139,9 +139,9 @@ function myFunction()
           <div id="carousel-example-captions" class="carousel slide" data-ride="carousel" data-interval="false">
         <div class="carousel-inner ">
           <div class="item active">
-            <form class="form-search" role="form" onSubmit="message();">
+            <form class="form-search" role="form" action="page.php?p=search" method="post" >
           <div class="input-group">
-              <input type="text" class="form-control glow textlarge" placeholder="What is your passion?">
+              <input type="text" name="keyword" class="form-control glow textlarge" placeholder="What is your passion?">
               <span class="input-group-btn">
                   <button type="submit" class="btn btn-primary glow textlarge">Search</button>
               </span>

@@ -157,11 +157,14 @@ function myFunction()
        	<li><a href="src/check.php" data-target="#carousel-example-captions" data-slide-to="1">Account</a></li>
       	<li><a href="index.html?page=contact" data-target="#carousel-example-captions" data-slide-to="3">Conctact</a></li>
         <li><a href="page.php?p=about">About</a></li>
+        <? if($_SESSION['userid'] !=NULL){?>
+        	<li><a href="src/logout.php">Log out</a></li>
+        <? }?>
       
     </ul>
-   <form class="navbar-form navbar-left" role="search">
+   <form class="navbar-form navbar-left" role="search"role="form" action="page.php?p=search" method="post" >
       <div class="form-group">
-        <input type="text" class="form-control" style="width: 100%" placeholder="Search">
+        <input type="text" class="form-control" name="keyword" style="width: 100%" placeholder="Search">
       </div>
       <button type="submit" class="btn btn-default">Submit</button>
     </form>

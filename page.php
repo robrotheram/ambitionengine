@@ -15,6 +15,10 @@ switch ($page)
    case "ft":
    require_once('pages/firstTime.php');
    break;
+   case "search":
+   require_once('pages/search.php');
+   break;
+	
 	
 	
 }
