@@ -1,3 +1,4 @@
+<? session_start();	?>
 <!DOCTYPE html>
 <html>
   <head>
@@ -6,6 +7,8 @@
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
 <link href="css/galaxy.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" media="screen" href="http://tarruda.github.com/bootstrap-datetimepicker/assets/css/bootstrap-datetimepicker.min.css">
+  
 <link href='http://fonts.googleapis.com/css?family=Coming+Soon' rel='stylesheet' type='text/css'>
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -25,6 +28,13 @@ function message() {
 function toggleStyle() {
 	 var hash = CryptoJS.SHA3(document.forms["login"]["password"].value, { outputLength: 512 });
      document.forms["login"]["password"].value = hash;
+		
+}
+
+function encrypt() {
+	 var hash = CryptoJS.SHA3(document.forms["email"]["registerPassword"].value, { outputLength: 512 });
+     	document.forms["email"]["registerPassword"].value = hash;
+		return true;
 		
 }
 
@@ -149,6 +159,12 @@ function myFunction()
         <li><a href="page.php?p=about">About</a></li>
       
     </ul>
+   <form class="navbar-form navbar-left" role="search">
+      <div class="form-group">
+        <input type="text" class="form-control" style="width: 100%" placeholder="Search">
+      </div>
+      <button type="submit" class="btn btn-default">Submit</button>
+    </form>
      <ul class="nav navbar-nav navbar-right" style="padding-right:30px;">
      <li><a href="http://facebook.com/robrotheram" >Facebook</a> </li>
      <li><a href="http://twitter.com/robrotheram" >Twitter</a></li>

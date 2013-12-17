@@ -12,6 +12,10 @@ switch ($page)
    case "reset":
    require_once('pages/resetpassword.php');
    break;
+   case "ft":
+   require_once('pages/firstTime.php');
+   break;
+	
 	
 }
  require_once('footer.php');

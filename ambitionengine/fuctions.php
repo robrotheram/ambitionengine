@@ -15,8 +15,9 @@ function MSQL_login($user, $pasword,$next){
 }
 function MSQL_register($user, $pass,$next){
 	require('login.php');
+	require('personinfo.php');
 	
-	if(addLogin($user, $pass)==TRUE){
+	if((addLogin($user, $pass)==TRUE)&&newUser($user)){
 		
 		session_start();	
 		$_SESSION['userid'] = $user;
@@ -57,6 +58,25 @@ function MYSQL_search($key,$loc){
 		require 'aggregate_search.php';
 		return json_decode(search($key,$loc));
 	}
+
+function MYSQL_updateUser($user,$fname,$sname,$dob,$gender,$occp,$loc,$about,$hobbies,$pass){
+		require('personinfo.php');
+		
+		if(isset($pass)&&($pass != '')){
+			require 'login.php';
+			updateLogin($user,$pass);
+		}
+		
+		if(updateUser($user,$fname,$sname,$dob,$gender,$occp,$loc,$about,$hobbies) ==TRUE){
+			header('Location: ../page.php?p=home');	
+		} else {
+			header('Location: ../page.php?p=home');
+		}
+	}
+function MYSQL_getUser($user){
+	require('personinfo.php');
+	return getUser($user);
+}
 
 
 ?>

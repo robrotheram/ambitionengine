@@ -32,6 +32,9 @@
 			case "SEARCH":
 				 MYSQL_Search($_POST['keyword'], $_POST['search']);
 				break;
+			case "UPDATEUSER":
+				 MYSQL_updateUser($_POST['username'],$_POST['firstname'],$_POST['lName'],$_POST['dob'],$_POST['gender'],$_POST['ocupation'],$_POST['location'],$_POST['about'],$_POST['hobbies'],$_POST['registerPassword']);
+				break;
 		}
 	}
 
