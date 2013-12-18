@@ -25,5 +25,12 @@
         startDate: '05/12/1992',
       });
     </script>
+    
+    <script>
+  $(function () {
+    $('#myTab a:last').tab('show')
+  })
+</script>
+
   </body>
 </html>

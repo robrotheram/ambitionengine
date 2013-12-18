@@ -78,5 +78,31 @@ function MYSQL_getUser($user){
 	return getUser($user);
 }
 
+function MYSQL_addFav($username,$jobName,$jobURL){
+	require_once 'fav.php';
+	addFavourite($username,$jobName,$jobURL);
+	
+}
+
+
+function MYSQL_addRecent($username,$jobName,$jobURL){
+	require_once 'resent.php';
+	addresent($username,$jobName,$jobURL);
+	
+}
+
+
+function MYSQL_getRecent($user){
+	require_once 'resent.php';
+	return getresent($user);
+}
+
+
+function MYSQL_getFav($user){
+	require_once 'fav.php';
+	return  getFav($user);
+}
+
+
 
 ?>

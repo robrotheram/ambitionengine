@@ -18,6 +18,8 @@ switch ($page)
    case "search":
    require_once('pages/search.php');
    break;
+   case "display":
+	require_once 'pages/display.php';
 	
 	
 	

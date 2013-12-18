@@ -2,7 +2,11 @@
 	$userid =  $_SESSION['userid'] ;
 	if($userid == NULL){ require 'denied.php';}else{
 	require 'ambitionengine/fuctions.php';
-	require 'src/TweetPHP.php';
+		
+		
+		
+	$recent = MYSQL_getRecent($userid);
+	$fav =  MYSQL_getFav($userid);
 	$reults =  mysqli_fetch_array(MYSQL_getUser($userid));
     $email = $userid;
 	$default = "http://yoyoambition.com/beta/img/profile.png";
@@ -44,10 +48,12 @@
     <div class="thumbnail">
     	<h2>Your Recent Things you looked at</h2>
 		<table class="table" style="width:100%">
+		<?	while($r =  mysqli_fetch_array($recent)) {?>
 		<tr>
-			<td colspan="2"> Comming Soon</td>
+			<td ><a href="<? echo $r['url'];?>"><? echo $r['jobname'];?></a></td>
 		</tr>
-		</table>
+		<?}?>
+				</table>
     </div>
   </div>
 
@@ -56,9 +62,11 @@
     <div class="thumbnail">
     	<h2>Your Favourites</h2>
 		<table class="table" style="width:100%">
+		<?	while($r =  mysqli_fetch_array($fav)) {?>
 		<tr>
-			<td colspan="2"> Comming Soon</td>
+			<td ><a href="<? echo $r['url'];?>"><? echo $r['jobname'];?></a></td>
 		</tr>
+		<?}?>
 		</table>
     </div>
   </div>
