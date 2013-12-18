@@ -34,7 +34,7 @@
 	function getresent($user){
 		
 		global $con;
-		$sql  = "SELECT * FROM recent WHERE username = '$user'";
+		$sql  = "SELECT * FROM recent WHERE username = '$user' ORDER BY id DESC LIMIT 20";
 		if (mysqli_query($con, $sql) == TRUE) {
 				return mysqli_query($con, $sql);
 		}else{

@@ -50,7 +50,9 @@
 		<table class="table" style="width:100%">
 		<?	while($r =  mysqli_fetch_array($recent)) {?>
 		<tr>
-			<td ><a href="<? echo $r['url'];?>"><? echo $r['jobname'];?></a></td>
+			<td colspan="2" ><a href="<? echo $r['url'];?>"><? echo $r['jobname'];?></a></td>
+			
+			
 		</tr>
 		<?}?>
 				</table>
@@ -64,7 +66,16 @@
 		<table class="table" style="width:100%">
 		<?	while($r =  mysqli_fetch_array($fav)) {?>
 		<tr>
-			<td ><a href="<? echo $r['url'];?>"><? echo $r['jobname'];?></a></td>
+			<td ><a href="<? echo $r['url'];?>"><? echo urldecode($r['jobname']);?></a></td>
+			<td>
+				<form role="form" method="post" action="ambitionengine/api.php">
+						<input type="hidden" name="content_type" value="OTHER">
+					    <input type="hidden" name="request_type" value="DELETEFAV">
+					    <input type="hidden" name="favid" value="<?echo $r['id'];?> ">
+					    <button type="submit" class="btn btn-warning" style="width:100%;">Delete</button>
+					</form>
+				
+				
 		</tr>
 		<?}?>
 		</table>

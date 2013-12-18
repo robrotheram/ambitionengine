@@ -81,6 +81,7 @@ function MYSQL_getUser($user){
 function MYSQL_addFav($username,$jobName,$jobURL){
 	require_once 'fav.php';
 	addFavourite($username,$jobName,$jobURL);
+	header('Location: ../'.$jobURL);
 	
 }
 
@@ -88,7 +89,7 @@ function MYSQL_addFav($username,$jobName,$jobURL){
 function MYSQL_addRecent($username,$jobName,$jobURL){
 	require_once 'resent.php';
 	addresent($username,$jobName,$jobURL);
-	
+
 }
 
 
@@ -102,6 +103,18 @@ function MYSQL_getFav($user){
 	require_once 'fav.php';
 	return  getFav($user);
 }
+
+function MYSQL_deletFav($id){
+	require_once 'fav.php';
+	 deleteFav($id);
+	 header('Location: ../page.php?p=home');
+}
+
+function MYSQL_hasFav($username, $jobname){
+	require_once 'fav.php';
+	return hasFav($username,$jobname);
+}
+	
 
 
 

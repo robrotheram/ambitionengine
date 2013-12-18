@@ -42,7 +42,7 @@
 
 
 		<tr>
-			 <td><a href="page.php?p=display&title=<? echo $title;?>&location=<? echo $loc;?>&company=<? echo $company;?>&salery=<? echo $salery; ?>&desc=<? echo $des; ?> "><? echo $title?></a></td>
+			 <td><a href="<? echo 'page.php?p=display&title='.urlencode($title).'&location='.urlencode($loc).'&company='. urlencode($company).'&salery='.urlencode($salery).'&desc='.urlencode($des); ?>"><? echo $title?></a></td>
    			<td><? echo $loc;?></td>
 		</tr>
 		<? }?>

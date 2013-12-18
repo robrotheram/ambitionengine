@@ -42,6 +42,9 @@
 			case "ADDRECENT":
 				MYSQL_addRecent($_POST['username'],$_POST['jobName'],$_POST['jobURL']);
 				break;
+			case "DELETEFAV":
+				MYSQL_deletFav($_POST['favid']);
+				break;
 			
 		}
 	}

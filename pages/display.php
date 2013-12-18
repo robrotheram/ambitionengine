@@ -1,9 +1,10 @@
 <?php
-$title = $_GET['title'];
-$location  = $_GET['location'];
-$comany  = $_GET['company'];
-$salery  = $_GET['salery'];
-$dec = $_GET['desc'];
+$title = urldecode($_GET['title']);
+$location  = urldecode($_GET['location']);
+$comany  = urldecode($_GET['company']);
+$salery  = urldecode($_GET['salery']);
+$dec = urldecode($_GET['desc']);
+	require 'ambitionengine/fuctions.php';
 
 ?>
 <? $userid =  $_SESSION['userid'] ;
@@ -76,14 +77,29 @@ $.post("ambitionengine/api.php",
 			if($userid != NULL){ ?>
 			<div class="row">
 				<div class="col-sm-6">
+					<? 
+					$jid = MYSQL_hasFav($userid,urlencode($title));
+					if($jid != NULL){?>
+						
+						<form role="form" method="post" action="ambitionengine/api.php">
+						<input type="hidden" name="content_type" value="OTHER">
+					    <input type="hidden" name="request_type" value="DELETEFAV">
+					    <input type="hidden" name="favid" value="<?echo $jid; ?>">
+					    <button type="submit" class="btn btn-warning" style="width:100%;">Delete From your Fav</button>
+					</form>
+						
+					<? } else{ ?>
+					
+					
 					<form role="form" method="post" action="ambitionengine/api.php">
 						<input type="hidden" name="content_type" value="OTHER">
 					    <input type="hidden" name="request_type" value="ADDFAV">
 					    <input type="hidden" name="username" value="<? echo $userid;?> ">
-					    <input type="hidden" name="jobName" value="<? echo $title  ?> ">
+					    <input type="hidden" name="jobName" value="<? echo urlencode($title);  ?> ">
 					    <input type="hidden" name="jobURL" value="<? echo 'page.php?p=display&title='.urlencode($title).'&location='.urlencode($location).'&company='. urlencode($comany).'&salery='.urlencode($salery).'&desc='.urlencode($dec); ?>">
 						<button type="submit" class="btn btn-primary" style="width:100%;">Add to Favourite</button>
 					</form>
+					<? }?>
 				</div>
 				<div class="col-sm-6">
 					<a href="https://twitter.com/intent/tweet?source=webclient&text=Found this cool job:<? echo $title;?> at @yoyoambition" class="btn btn-info" style="width:100%">Tweet</a>
