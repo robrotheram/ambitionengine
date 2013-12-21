@@ -7,7 +7,14 @@
 		
 	$recent = MYSQL_getRecent($userid);
 	$fav =  MYSQL_getFav($userid);
-	$reults =  mysqli_fetch_array(MYSQL_getUser($userid));
+	$reults;
+	$typeOfUser = mysqli_fetch_array(MYSQL_getUserType($userid));
+	if($typeOfUser['type']==0){
+		$reults =  mysqli_fetch_array(MYSQL_getUser($userid));
+	} else{
+		$reults =  mysqli_fetch_array(MYSQL_getOrg($userid));
+	}
+	
     $email = $userid;
 	$default = "http://yoyoambition.com/beta/img/profile.png";
 	$size = 128;
@@ -25,6 +32,7 @@
       <img class="img-thumbnail img-rounded" src="<?php echo $grav_url; ?>" alt="..." width="128" height="128">
       <div class="caption" style="height:250px;">
       	<table class="table" style="width:100%">
+      		<? if($typeOfUser == 0){ ?>
    					<tr>
    						<td>Name</td>
    						<td><? echo $reults['forename']." ".$reults['surname'];?></td>
@@ -37,6 +45,21 @@
    					<tr>
    						<td>Location</td>
    						<td><? echo $reults['location'];?></td>
+   				<? }else{ ?>
+   					<tr>
+   						<td>Name</td>
+   						<td><? echo $reults['name'];?></td>
+   					</tr>
+   					<tr>
+   						<td>Registration Number</td>
+   						<td><? echo $reults['regnumber'];?></td>
+   						
+   					</tr>
+   					<tr>
+   						<td>Location</td>
+   						<td><? echo $reults['location'];?></td>
+   				
+   				<?}?>
 					</table>
 					<hr><br>
       	<a href="page.php?p=ft" class="btn btn-success" style="width: 100%">Change info</a>

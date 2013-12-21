@@ -4,6 +4,33 @@
 	NOTE: CURRENTLY LIMITE TO 3 PAGES. CAN EDIT TO LIMITLESS SCROLLING LATER
 */
 
+	function fromDB($keyword){
+		require_once 'orgsignup.php';
+		$results = getAllOrg();
+		$careerjet_response = array();
+		while($r = mysqli_fetch_array($results)){
+			if (strpos($r['terms'],$keyword) !== false) {
+				$item = array();
+				$item["url"] = $r['url'] ;
+				$item["title"] = $r['name'];
+				$item["locations"] = $r['location'];
+				$item["img"] = $r['bannarimg'];
+				$item["type"] = "our_own" ;
+				
+
+					//push single job entry into the array
+					array_push($careerjet_response, $item);
+				
+				
+				
+			}
+		}
+		return $careerjet_response;	
+
+	}
+
+	
+
 	function getJobs ($keyword, $location){
 
 		//page limit
@@ -74,7 +101,7 @@
 		$final_response["success"] = 1;
 				
 		//join all datasets into the final response
-		$response = $careerjet_response;
+		$response = array_merge(fromDB($keyword), $careerjet_response);
 				
 		//final array will be the merge of all arrays (change comments below later)
 		$final_response["jobs"] = $response;

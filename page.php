@@ -20,7 +20,10 @@ switch ($page)
    break;
    case "display":
 	require_once 'pages/display.php';
-	
+	break;
+   case "orgsign":
+	   require_once 'pages/orgSignup.php';
+	break;
 	
 	
 }

@@ -45,6 +45,9 @@
 			case "DELETEFAV":
 				MYSQL_deletFav($_POST['favid']);
 				break;
+			case "ADDORG":
+				 MYSQL_addorg($_POST['username'],$_POST['registerPassword'], $_POST['CompanyName'], $_POST['CompanyNum'], $_POST['CompanyCont'], $_POST['sector'], $_POST['size'],  $_POST['location'], $_POST['bannarimg'], $_POST['terms'], $_POST['url']);
+				break;
 			
 		}
 	}

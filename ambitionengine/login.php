@@ -21,13 +21,27 @@ function login($user, $paswrd){
 	}
 	return $response;
 }
-function addLogin($user, $pass){
+
+function getUserType($user){
+	global $con;
+	$sql  = "SELECT type FROM LoginDetails WHERE username = '$user'";
+	$response;
+	if (!mysqli_query($con,$sql)){
+		die('Error: ' . mysqli_error($con));
+		$response = FALSE;
+	}else{
+		$response = mysqli_query($con,$sql);
+		
+	}
+	return $response;
+}
+function addLogin($user, $pass, $type){
 	global $con;
 	$response;
 	$paasword = hash("sha512", $pass);
 	$salt = hash("sha512", time());
 	$nwpass = hash("sha512",($paasword.$salt));
-	$sql = "INSERT INTO LoginDetails(username , password, salt) VALUES('$user', '$nwpass','$salt');";
+	$sql = "INSERT INTO LoginDetails(username , password, salt, type) VALUES('$user', '$nwpass','$salt','$type');";
 	
 	
 	if (mysqli_query($con, $sql) == TRUE) {

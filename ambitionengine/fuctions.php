@@ -17,7 +17,7 @@ function MSQL_register($user, $pass,$next){
 	require('login.php');
 	require('personinfo.php');
 	
-	if((addLogin($user, $pass)==TRUE)&&newUser($user)){
+	if((addLogin($user, $pass, 0)==TRUE)&&newUser($user)){
 		
 		session_start();	
 		$_SESSION['userid'] = $user;
@@ -26,6 +26,11 @@ function MSQL_register($user, $pass,$next){
 		header('Location: fail.php');
 	}
 	
+}
+
+function MYSQL_getUserType ($username){
+	require('login.php');
+	return getUserType($username);
 }
 function MYSQL_getTeam(){
 	
@@ -114,6 +119,19 @@ function MYSQL_hasFav($username, $jobname){
 	require_once 'fav.php';
 	return hasFav($username,$jobname);
 }
+
+function MYSQL_addorg($user, $pass, $name, $regnumber, $contact, $sector, $size, $location, $bannarimg, $terms, $url){
+	require('login.php');	
+	addLogin($user, $pass, 2);
+	require_once 'orgsignup.php';
+ 	addorg($user, $name, $regnumber, $contact, $sector, $size, $location, $bannarimg, $terms, $url);
+}
+
+function MYSQL_getOrg($username){
+	require_once 'orgsignup.php';
+	return getOrg($username);
+}
+
 	
 
 
