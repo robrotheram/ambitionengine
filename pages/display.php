@@ -43,9 +43,6 @@ $.post("ambitionengine/api.php",
 <div class="container white">
 	
 	<div class="row">
-		<div class="col-lg-12"style="background-image:url('http://www.droid-life.com/wp-content/uploads/2013/01/googlenownewyork.png'); height: 300px; background-size: 100%;">
-		</div>
-	<div class="row">
 		<div class="col-lg-2">
 			<center>
 				<img class="img-thumbnail img-rounded" src="img/job.png" style="width:128px; height:128px;"/>

@@ -83,21 +83,7 @@
   </div>
   
      <div class="form-group">
-    <div class="col-sm-12">
-    	<label>Bannar img url (800px, 400px)</label>
-      <input type="text" class="form-control" id="subject" name="bannarimg" placeholder="url">
-    </div>
   </div>
-  </fieldset>
-  <hr>
-  <fieldset>
-	<legend>Advanced Info</legend>	
-   <div class="form-group">
-    <div class="col-sm-12">
-         <textarea id="textarea" name="terms" class="form-control" rows="4" placeholder="Basic terms to describe your business seperate with commars eg(php,develeopment)"></textarea>
-    </div>
-  </div>
-  </fieldset>
   <hr />
   <div class="form-group">
     <div class="col-sm-12">

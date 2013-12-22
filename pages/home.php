@@ -33,7 +33,8 @@
       <img class="img-thumbnail img-rounded" src="<?php echo $grav_url; ?>" alt="..." width="128" height="128">
       <div class="caption" style="height:250px;">
       	<table class="table" style="width:100%">
-      		<? if($typeOfUser == 0){ ?>
+      		<? 
+      		if($typeOfUser['type'] == 0){ ?>
    					<tr>
    						<td>Name</td>
    						<td><? echo $reults['forename']." ".$reults['surname'];?></td>
@@ -59,10 +60,13 @@
    					<tr>
    						<td>Location</td>
    						<td><? echo $reults['location'];?></td>
-   				
+   					</tr>
+   					<tr>
+   						<td colspan="2"><a class="btn btn-primary" style="width: 100%;" href="page.php?p=addjob">Add Job</a></td>
+   					</tr>
    				<?}?>
 					</table>
-					<hr><br>
+					
       	<a href="page.php?p=ft" class="btn btn-success" style="width: 100%">Change info</a>
       </div>
     </div>

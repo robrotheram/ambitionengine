@@ -30,6 +30,12 @@ switch ($page)
 	 case "addpost":
 	   require_once 'pages/addpost.php';
 	break;
+	 case "addjob":
+	   require_once 'pages/AddJob.php';
+	break;
+	case "error":
+	   require_once 'pages/denied.php';
+	break;
 	
 	
 }

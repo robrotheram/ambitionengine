@@ -1,3 +1,10 @@
+<?php
+$message = $_GET['mssg'];
+if($message==null){
+	$message = ' I am sorry but the page you are trying to access is not avalible to you. <br>
+		    Have you trired to log in?<br>';
+}
+?>
 <div class="business-header">
     
       <div class="container">
@@ -21,8 +28,7 @@
 		</div>
   		<div class="col-lg-10 textlarge">
 		    <h3>Access Denied</h3>
-		    I am sorry but the page you are trying to access is not avalible to you. <br>
-		    Have you trired to log in?<br>
+		 	Message: <? echo $message;?>
 		    <br>
 		    <div class="row">
 		    	<a href="index.html?page=login" class="btn btn-success col-lg-6" >login</a><a href="index.html?page=signup" class="btn btn-warning col-lg-6">Sign up</a>

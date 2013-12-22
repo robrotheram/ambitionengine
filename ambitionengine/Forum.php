@@ -71,7 +71,7 @@ function getPostbyUsername($user){
 	return $response;
 }
 	function addReply($id,$content,$user){
-		echo $id ."|".$content."|".$user;
+	
 		
 		global $con;
 		 $sql = "INSERT INTO ForumReplys (postid, username, content, rank, date) VALUES('$id', '$user', '$content', '0', NOW());";
@@ -88,7 +88,7 @@ function getPostbyUsername($user){
 	
 	function getReplys($id){
 		global $con;
-		$sql = "SELECT * FROM ForumReplys where postid  = '$id';";	 
+		$sql = "SELECT * FROM ForumReplys where postid  = '$id' ORDER BY rank DESC;";	 
 		$response;
 		if (!mysqli_query($con,$sql)){
 			die('Error: ' . mysqli_error($con));
@@ -132,6 +132,19 @@ function getPostbyUsername($user){
 		return $response;
 	}
 
+
+function updateRank($id,$rank){
+	global $con;
+		$sql = "UPDATE ForumReplys SET rank = '$rank' WHERE id = '$id';";	 
+		$response;
+		if (!mysqli_query($con,$sql)){
+			die('Error: ' . mysqli_error($con));
+			$response = FALSE;
+		}else{
+			$response = TRUE;
+		}
+		return $response;
+}
 
 
 

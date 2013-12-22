@@ -13,26 +13,50 @@
 		$grav_url = "http://www.gravatar.com/avatar/" . md5( strtolower( trim( $email ) ) ) . "?d=" . urlencode( $default ) . "&s=" . $size;
 
 ?>
+<style>
+	body{
+		background-image: url('img/whitey.png');
+	}
+	
+</style>
 
-<div class="container white">
-	<div class="row" style="border: 1px solid #cdd0d4;border-buttom: 1px solid #cdd0d4; width: 99%; margin: 0 auto;">
-		<table width="100%">
+  <div class="business-header">
+    
+      <div class="container" style="padding-top: 20px">
+
+        <div class="row" style="color:#FFFFFF">
+          <div class="col-lg-1">
+          	  	<table width="100%;" style="margin-left:-15px;">
+				  <tr>
+				    <th style="width: 100px;"><center><img class="img img-rounded" src="<?php echo $grav_url; ?>" alt="logo" width="96px" height="96 px"></center></th>
+				  </tr>
+				  <tr>
+				    <td><center><? echo $person['forename']." ".$person['surname'];?></center></td>
+				  </tr>
+				  <tr>
+				    <td><center><? echo $reults['date'];?></center></td>
+				  </tr>
+				</table>
+          </div>
+          <div class="col-lg-11">
+          	<table width="100%">
 		  <tr>
-		    <th rowspan="2"style="border-bottom: 1px solid #cdd0d4;border-buttom: 1px solid #cdd0d4; border-right: 1px solid #cdd0d4;border-buttom: 1px solid #cdd0d4; width: 100px;"><center><img class="img img-rounded" src="<? echo $grav_url; ?>" alt="logo" width="96px" height="96 px"></center></th>
-		    <th style="border-bottom: 1px solid #cdd0d4;border-buttom: 1px solid #cdd0d4;"><h4 style="margin-left: 10px;"><? echo $reults['title'];?></h4></td></th>
+		    <th class="btn btn-info" style="width: 100%"><? echo $reults['title'];?></th>
 		  </tr>
 		  <tr>
-		    <td rowspan="3"><p style="margin-left: 10px;"><? echo $reults['content']; ?></p></td>
-		  </tr>
-		  <tr>
-		    <td style="border-bottom: 1px solid #cdd0d4;border-buttom: 1px solid #cdd0d4; border-right: 1px solid #cdd0d4;border-buttom: 1px solid #cdd0d4;"><? echo $person['forename']." ".$person['surname'];?></td>
-		  </tr>
-		  <tr>
-		    <td  style="border-right: 1px solid #cdd0d4;border-buttom: 1px solid #cdd0d4;"><? echo $reults['date'];?></td>
+		    <td style="padding-top: 20px"><? echo $reults['content'];?> </td>
 		  </tr>
 		</table>
-	</div>
-	<hr />
+          </div>
+        </div>
+      
+      </div>
+    
+    </div>
+    
+
+
+<div class="container">
 	
 	<?  while ($r = mysqli_fetch_array($replys)) { 
 		$email = $r['username'];
@@ -44,26 +68,50 @@
 		$replyperson = mysqli_fetch_array(MYSQL_getUser($r['username']));
 		
 		?>
-<br>
-	<div class="row" style="border: 1px solid #cdd0d4;border-buttom: 1px solid #cdd0d4;width: 99%; margin: 0 auto; ">
+	
+
+		<div class="row" style="border: 1px solid #cdd0d4;border-buttom: 1px solid #cdd0d4;width: 99%; margin: 0 auto; margin-top: 20px;
+	-webkit-box-shadow: 5px 5px 5px 1px rgba(0,0,0,0.2);
+	box-shadow: 5px 5px 5px 1px rgba(0,0,0,0.2);
+	background-image: url('img/paper.png'); ">
 		<table width="100%">
 		  <tr>
 		    <th style="border: 1px solid #cdd0d4;border-buttom: 1px solid #cdd0d4; width: 100px;"><center><img class="img img-rounded" src="<? echo $grav_url;?>" alt="logo" alt="logo" width="96px" height="96 px"></center></th>
 		    <td rowspan="2"><? echo $r['content']?></th>
-		    <th style="border-left: 1px solid #cdd0d4;border-buttom: 1px solid #cdd0d4; width: 50px;"><center><img class="img-circle" src="https://cdn1.iconfinder.com/data/icons/windows-8-metro-style/64/thumbs_up.png" width="48" height="48" alt="logo"></center></td>
+		    <th style="border-left: 1px solid #cdd0d4;border-buttom: 1px solid #cdd0d4; width: 50px;">
+		    	<form name="email" id="email"  class="form-horizontal st" role="form" method="post" action="ambitionengine/api.php">
+			     <input type="hidden" name="content_type" value="OTHER">
+			     <input type="hidden" name="request_type" value="UPDATERANK">
+			     <input type="hidden" name="id" value="<? echo $r['id']; ?> ">
+			      <input type="hidden" name="rank" value="<? echo ($r['rank'] +1) ?> ">
+			       <input type="hidden" name="page" value="<? echo $id; ?> ">
+		    	<center><input type="image" src="https://cdn1.iconfinder.com/data/icons/windows-8-metro-style/64/thumbs_up.png"></center>
+		    	</form>
+		    	</td>
 		  </tr>
 		  <tr>
-		  	<td style="border-right: 1px solid #cdd0d4;border-buttom: 1px solid #cdd0d4; width: 100px;"><? echo $replyperson['forename']." ".$replyperson['surname'];?></td>
-		    <td style="border-left: 1px solid #cdd0d4;border-buttom: 1px solid #cdd0d4; width: 50px;"><center><img class="img-circle" src="https://cdn1.iconfinder.com/data/icons/windows-8-metro-style/64/thumbs_down.png" width="48" height="48"  alt="logo" ></center></td>
+		  	<td style="border-right: 1px solid #cdd0d4;border-buttom: 1px solid #cdd0d4; width: 100px;"><? echo $replyperson['forename']." ".$replyperson['surname'];?> </td>
+		    <td style="border-left: 1px solid #cdd0d4;border-buttom: 1px solid #cdd0d4; width: 50px;">
+			<form name="email" id="email"  class="form-horizontal st" role="form" method="post" action="ambitionengine/api.php">
+			     <input type="hidden" name="content_type" value="OTHER">
+			     <input type="hidden" name="request_type" value="UPDATERANK">
+			     <input type="hidden" name="id" value="<? echo $r['id']; ?> ">
+			      <input type="hidden" name="rank" value="<? echo ($r['rank'] -1) ?> ">
+		    	<center><input type="image" src="https://cdn1.iconfinder.com/data/icons/windows-8-metro-style/64/thumbs_down.png"></center>
+		    	</form>
+			
+			
+
+			</td>
 		  </tr>
 		</table>
 
 	</div>
-	<?} ?>
+	<? }?>
 	<br>
-	<hr>
 	<br>
-<form name="email" id="email"  class="form-horizontal st" role="form" method="post" action="ambitionengine/api.php">
+	<hr />
+	<form name="email" id="email"  class="form-horizontal st" role="form" method="post" action="ambitionengine/api.php">
      <input type="hidden" name="content_type" value="OTHER">
      <input type="hidden" name="request_type" value="ADDREPLY">
      <input type="hidden" name="username" value="<? echo $userid;?> ">
@@ -84,9 +132,26 @@
     </div>
   </div>
     </form>
+	
+	
+	
+	
+</div>
 
 
 
-      </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <? } ?>

@@ -49,12 +49,17 @@
 				 MYSQL_addorg($_POST['username'],$_POST['registerPassword'], $_POST['CompanyName'], $_POST['CompanyNum'], $_POST['CompanyCont'], $_POST['sector'], $_POST['size'],  $_POST['location'], $_POST['bannarimg'], $_POST['terms'], $_POST['url']);
 				break;
 			case "ADDPOST":
-			 MYSQL_addPost($_POST['username'],$_POST['title'], $_POST['content'], $_POST['terms']);
-			break;
+				 MYSQL_addPost($_POST['username'],$_POST['title'], $_POST['content'], $_POST['terms']);
+				break;
 			case "ADDREPLY":
-			 MYSQL_addReply($_POST['id'],$_POST['content'], $_POST['username']);
-			break;
-			
+				 MYSQL_addReply($_POST['id'],$_POST['content'], $_POST['username']);
+				break;
+			case "UPDATERANK":
+				MYSQL_updateRank($_POST['id'],$_POST['rank'],$_POST['page']);
+				break;
+			case "ADDJOB":
+				MYSQL_addJob($_POST['id'],$_POST['title'],$_POST['salery'],$_POST['dec'],$_POST['terms']);
+				break;
 		}
 	}
 

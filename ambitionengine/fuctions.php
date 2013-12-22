@@ -10,7 +10,7 @@ function MSQL_login($user, $pasword,$next){
 		$_SESSION['userid'] = $user;
 		header('Location:'.$next);
 	}else{
-		header('Location: fail.php');
+		header('Location: ../page.php?p=error');	
 	}	
 }
 function MSQL_register($user, $pass,$next){
@@ -23,7 +23,7 @@ function MSQL_register($user, $pass,$next){
 		$_SESSION['userid'] = $user;
 		header('Location:'.$next);
 	}else{
-		header('Location: fail.php');
+		header('Location: ../page.php?p=error');	
 	}
 	
 }
@@ -122,9 +122,15 @@ function MYSQL_hasFav($username, $jobname){
 
 function MYSQL_addorg($user, $pass, $name, $regnumber, $contact, $sector, $size, $location, $bannarimg, $terms, $url){
 	require('login.php');	
-	addLogin($user, $pass, 2);
+	
 	require_once 'orgsignup.php';
- 	addorg($user, $name, $regnumber, $contact, $sector, $size, $location, $bannarimg, $terms, $url);
+ 	if((addorg($user, $name, $regnumber, $contact, $sector, $size, $location, $bannarimg, $terms, $url) ==TRUE)&&(addLogin($user, $pass, 2)==TRUE)){
+ 		header('Location: ../page.php?p=home');	
+ 	} else{
+ 		header('Location: ../page.php?p=error&message=Something went wrong. Please try agin or contact us. ');	
+ 	}
+	
+	
 }
 
 function MYSQL_getOrg($username){
@@ -138,10 +144,21 @@ function MYSQL_getAllOrgs(){
 	return getAllOrg();
 }
 
+function MYSQL_addJob($id,$title,$salery,$des){
+	require_once 'orgsignup.php';
+	addJob($id,$title,$salery,$des);
+	header('Location: ../page.php?p=home');	
+}
+
+
+
+
 
 function MYSQL_addPost($user, $title, $content, $terms){
 	require_once 'Forum.php';
 	addPost($user, $title, $content, $terms);
+	header('Location: ../page.php?p=home');	
+	
 }
 
 
@@ -164,11 +181,18 @@ function MYSQL_getAllPost(){
 }
 function MYSQL_addReply($id,$content,$user){
 	require_once 'Forum.php';
-	return addReply($id,$content,$user);
+	addReply($id,$content,$user);
+	header('Location: ../page.php?p=forumpost&id='.$id);	
+	
 }
 function MYSQL_getReplys($id){
 	require_once 'Forum.php';
 	return getReplys($id);
+}
+function MYSQL_updateRank($id,$rank,$page){
+	require_once 'Forum.php';
+	updateRank($id,$rank);
+	header('Location: ../page.php?p=forumpost&id='.$page);	
 }
 
 	

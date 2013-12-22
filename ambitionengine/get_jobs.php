@@ -6,16 +6,20 @@
 
 	function fromDB($keyword){
 		require_once 'orgsignup.php';
-		$results = getAllOrg();
+		$results =  getAllJOBS();
 		$careerjet_response = array();
 		while($r = mysqli_fetch_array($results)){
+			
 			if (strpos($r['terms'],$keyword) !== false) {
+				
+				$rx = mysqli_fetch_array(getOrg($r['orgid']));
 				$item = array();
-				$item["url"] = $r['url'] ;
-				$item["title"] = $r['name'];
-				$item["locations"] = $r['location'];
-				$item["img"] = $r['bannarimg'];
-				$item["type"] = "our_own" ;
+				$item["url"] = $rx['url'] ;
+				$item["title"] = $r['jobtitle'];
+				$item["locations"] = $rx['location'];
+				$item["company"] = $rx['name'];
+				$item["salary"] =  urlencode($r['salary']);
+				$item["description"] = $r['description'] ;
 				
 
 					//push single job entry into the array
