@@ -1,4 +1,5 @@
 <?php
+;
 
 	function search($keyword,$location){
 		//set response array
@@ -17,6 +18,7 @@
 		//include relevant files for functions
 		include("get_jobs.php");
 		include("get_mentors.php");
+		include 'Forum.php';
 		
 		//get results from individual stream php files-------------------------------------------------------
 		
@@ -24,9 +26,8 @@
 		//get jobs
 		$jobs_response = getJobs($keyword, $location);
 		
-		//get education
-		
-		
+		//get forum posts
+		$response["forum"] = searchForum($keyword);
 		
 		//get opportunities and volunteering
 		

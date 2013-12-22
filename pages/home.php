@@ -4,9 +4,10 @@
 	require 'ambitionengine/fuctions.php';
 		
 		
-		
+	$posts = MYSQL_getPostbyUsername($userid);
 	$recent = MYSQL_getRecent($userid);
 	$fav =  MYSQL_getFav($userid);
+	$orgs = MYSQL_getAllOrgs();
 	$reults;
 	$typeOfUser = mysqli_fetch_array(MYSQL_getUserType($userid));
 	if($typeOfUser['type']==0){
@@ -124,11 +125,19 @@
   
  <div class="col-sm-6 col-md-4">
     <div class="thumbnail">
-    	<h2>Recent Posts</h2>
 		<table class="table" style="width:100%">
-		<tr>
-			<td colspan="2"> Comming Soon</td>
+			<tr>
+				<th><h4>Your Recent Posts</h4></th>
+				<th><a href="page.php?p=addpost" class="btn btn-success">Create Post</a></th>
+			</tr>
+		<? while ($r = mysqli_fetch_array($posts)) {?>
+			<tr>
+			<td colspan="2"><a href="page.php?p=forumpost&id=<? echo $r['id'];?>"><? echo $r['title'];?></a></td>
 		</tr>
+			
+		<? } ?>
+			
+		
 		</table>
     </div>
   </div>
@@ -136,11 +145,15 @@
 
  <div class="col-sm-6 col-md-4">
     <div class="thumbnail">
-    	<h2>latest organisations</h2>
+    	<h2>Latest organisations</h2>
 		<table class="table" style="width:100%">
-		<tr>
-			<td colspan="2"> Comming Soon</td>
+		<? while ($r = mysqli_fetch_array($orgs)) {?>
+			<tr>
+			<td colspan="1"><a href=""><? echo $r['name'];?></a></td>
+			<td colspan="1"><a href=""><? echo $r['sector'];?></a></td>
 		</tr>
+			
+		<? } ?>
 		</table>
     </div>
   </div>

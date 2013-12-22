@@ -1,6 +1,6 @@
 <?php
-	require('settings.php');
-	require('db_connect.php');
+	require_once('settings.php');
+	require_once('db_connect.php');
 	
 function MSQL_login($user, $pasword,$next){
 	require('login.php');
@@ -79,7 +79,7 @@ function MYSQL_updateUser($user,$fname,$sname,$dob,$gender,$occp,$loc,$about,$ho
 		}
 	}
 function MYSQL_getUser($user){
-	require('personinfo.php');
+	require_once('personinfo.php');
 	return getUser($user);
 }
 
@@ -130,6 +130,45 @@ function MYSQL_addorg($user, $pass, $name, $regnumber, $contact, $sector, $size,
 function MYSQL_getOrg($username){
 	require_once 'orgsignup.php';
 	return getOrg($username);
+}
+
+
+function MYSQL_getAllOrgs(){
+	require_once 'orgsignup.php';
+	return getAllOrg();
+}
+
+
+function MYSQL_addPost($user, $title, $content, $terms){
+	require_once 'Forum.php';
+	addPost($user, $title, $content, $terms);
+}
+
+
+function MYSQL_deletepost($id){
+	require_once 'Forum.php';
+	deletepost($id);
+}
+
+function MYSQL_getPostbyID($id){
+	require_once 'Forum.php';
+	return getPostbyID($id);
+}
+function MYSQL_getPostbyUsername($id){
+	require_once 'Forum.php';
+	return getPostbyUsername($id);
+}
+function MYSQL_getAllPost(){
+	require_once 'Forum.php';
+	return getAllPost();
+}
+function MYSQL_addReply($id,$content,$user){
+	require_once 'Forum.php';
+	return addReply($id,$content,$user);
+}
+function MYSQL_getReplys($id){
+	require_once 'Forum.php';
+	return getReplys($id);
 }
 
 	

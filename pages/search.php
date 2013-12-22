@@ -2,7 +2,8 @@
 	require 'ambitionengine/fuctions.php';
 	$results =   MYSQL_search($_POST['keyword'],'');
 	$length =  count ($results->jobs);
-	
+	$fourm_length = count ($results->forum);
+
 		
 		?>
 		
@@ -52,11 +53,17 @@
   
   <div class="col-sm-6 col-md-4">
     <div class="thumbnail" style="height:450px; overflow:auto;">
-    	<h2>Cources</h2>
+    	<h2>Forum Posts</h2>
 		<table class="table" style="width:100%">
+			
+			<?for ($i = 0; $i < $fourm_length; $i++) {
+				$title = $results->forum[$i]->title;
+				$postID = $results->forum[$i]->id;
+			?>
 		<tr>
-			<td colspan="2"> Comming Soon</td>
+			<td colspan="2"><a href="page.php?p=forumpost&id=<? echo $postID; ?>"><? echo $title; ?></a></td>
 		</tr>
+		<? }?>
 		</table>
     </div>
   </div>

@@ -24,6 +24,12 @@ switch ($page)
    case "orgsign":
 	   require_once 'pages/orgSignup.php';
 	break;
+	 case "forumpost":
+	   require_once 'pages/fourmPosts.php';
+	break;
+	 case "addpost":
+	   require_once 'pages/addpost.php';
+	break;
 	
 	
 }
