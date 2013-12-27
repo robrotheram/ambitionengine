@@ -148,6 +148,7 @@ function myFunction()
 
   </head>
   <body>
+<div id="wrap">
 <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
   <!-- Brand and toggle get grouped for better mobile display -->
   <div class="navbar-header" style="padding-left:30px;">
